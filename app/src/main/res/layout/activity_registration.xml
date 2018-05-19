@@ -42,7 +42,13 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="20dp"
-                android:id="@+id/txtHobby"/>
+                android:id="@+id/txtHobby"
+                android:hint="Enter your hobbies ..."/>
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/btnSave"
+            android:text="Save"/>
     </LinearLayout>
 
 

@@ -9,16 +9,19 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+
+import net.unitr.unitr.Model.User;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;
 
 public class Registration extends AppCompatActivity {
-	EditText txtHobby;
+	EditText txtHobby, txtName;
 	LinearLayout lstHobbies;
 	ImageView imgView;
 	final ArrayList<String> items = new ArrayList<>();
@@ -41,6 +44,16 @@ public class Registration extends AppCompatActivity {
 				dispatchTakePictureIntent();
 			}
 		});
+
+		Button btnSave = (Button)findViewById(R.id.btnSave);
+		btnSave.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View view) {
+				finish();
+			}
+		});
+
+		txtName.setText(User.me.Name);
 
 		final ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
 				android.R.layout.simple_dropdown_item_1line, items);
