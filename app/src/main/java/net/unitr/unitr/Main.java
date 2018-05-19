@@ -24,7 +24,7 @@ public class Main extends AppCompatActivity {
 		btnMeeting.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View view) {
-				Intent i = new Intent(getApplicationContext(), Registration.class);
+				Intent i = new Intent(getApplicationContext(), MeetingReview.class);
 				startActivity(i);
 			}
 		});

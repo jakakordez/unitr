@@ -1,5 +1,7 @@
 package net.unitr.unitr.Model;
 
+import android.content.Context;
+
 import com.google.android.gms.maps.model.LatLng;
 
 import net.unitr.unitr.Meeting.ParticipantItem;
@@ -10,6 +12,7 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Iterator;
 
 /**
  * Created by jakak on 19. 05. 2018.
@@ -39,5 +42,13 @@ public class Meeting extends Model {
 		catch(Exception e){}
 	}
 
-
+	public ArrayList<ParticipantItem> getParticipantList(Context ctx){
+		Iterator<User> iterator = Users.iterator();
+		ArrayList<ParticipantItem> list = new ArrayList<>();
+		while(iterator.hasNext()){
+			User u = iterator.next();
+			list.add(u.getParticipatingItem(ctx));
+		}
+		return list;
+	}
 }
