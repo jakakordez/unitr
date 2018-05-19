@@ -5,6 +5,7 @@ import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
@@ -22,6 +23,9 @@ public class HobbyView extends LinearLayout{
 	TextView lblName;
 	double mark = 1.0;
 	LinearLayout lstStars;
+	ImageButton btnRemove;
+
+	public Runnable removeRunnable;
 
 	public HobbyView(Context context, AttributeSet attributeSet){
 		super(context, attributeSet);
@@ -61,6 +65,13 @@ public class HobbyView extends LinearLayout{
 			lstStars.addView(img);
 			stars.add(img);
 		}
+		btnRemove = (ImageButton)view.findViewById(R.id.btnRemove);
+		btnRemove.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View view) {
+				if(removeRunnable != null) removeRunnable.run();
+			}
+		});
 		updateStars();
 		addView(view);
 	}
