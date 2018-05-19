@@ -2,6 +2,8 @@ package net.unitr.unitr.Model;
 
 import com.google.android.gms.maps.model.LatLng;
 
+import net.unitr.unitr.Meeting.ParticipantItem;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -30,6 +32,7 @@ public class Meeting extends Model {
 			JSONArray array = object.optJSONArray("Users");
 			for (int i = 0; i < array.length(); i++){
 				User u = new User(array.getJSONObject(i));
+
 				if(u != null) Users.add(u);
 			}
 		}

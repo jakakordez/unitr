@@ -4,9 +4,10 @@
              android:layout_height="match_parent"
              tools:context="net.unitr.unitr.Meeting.ParticipantsFragment">
 
-    <ListView
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/lstParticipants"/>
+        android:id="@+id/lstParticipants"
+        android:orientation="horizontal" />
 
 </FrameLayout>

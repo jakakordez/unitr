@@ -122,7 +122,7 @@ public class MeetingReview extends AppCompatActivity {
 					fragment = new DiscussionFragment();
 			}
 			try {
-				fragment.meeting = new Meeting(new JSONObject("{\"Location\": {\"Name\": \"Skriti kot\", \"Address\": \"Ajdovščina, 1000 Ljubljana\", \"Longitude\": 14.46, \"Latitude\": 45.7}, \"Timestamp\": \"18-05-2018\", \"Users\": [{\"Name\": \"Janez Novak\"}]}"));
+				fragment.meeting = new Meeting(new JSONObject("{\"Location\": {\"Name\": \"Skriti kot\", \"Address\": \"Ajdovščina, 1000 Ljubljana\", \"Longitude\": 14.46, \"Latitude\": 45.7}, \"Timestamp\": \"18-05-2018\", \"Users\": [{\"Name\": \"Janez Novak\", \"ProfilePicture\": \"url\"}]}"));
 			} catch (JSONException e) {
 				e.printStackTrace();
 			}
