@@ -3,11 +3,14 @@
              android:layout_width="match_parent"
              android:layout_height="match_parent"
              tools:context="net.unitr.unitr.Meeting.ParticipantsFragment">
-
-    <LinearLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/lstParticipants"
-        android:orientation="horizontal"/>
-
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/lstParticipants"
+            android:orientation="horizontal"
+            android:layout_margin="10dp"/>
+    </ScrollView>
 </FrameLayout>
