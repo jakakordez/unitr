@@ -1,11 +1,14 @@
 package net.unitr.unitr.Meeting;
 
 
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -22,12 +25,20 @@ import net.unitr.unitr.R;
 
 import org.w3c.dom.Text;
 
+import java.util.ArrayList;
+
 /**
  * A simple {@link Fragment} subclass.
  */
 public class GeneralFragment extends MeetingFragment {
 
 	TextView lblName, lblTimestamp, lblAddress;
+
+	ArrayList<ImageButton> stars;
+	Drawable yellowStar;
+	Drawable star;
+	LinearLayout lstStars;
+	double mark = 1.0;
 
 	public GeneralFragment() {
 		// Required empty public constructor
@@ -43,8 +54,11 @@ public class GeneralFragment extends MeetingFragment {
 		lblTimestamp = v.findViewById(R.id.lblTimestamp);
 		lblAddress = v.findViewById(R.id.lblAddress);
 
-		lblTimestamp.setText(Api.dateFormat.format(meeting.Timestamp));
-		lblName.setText(meeting.Location.Name);
+		 yellowStar = getActivity().getResources().getDrawable(R.drawable.ic_yellow_star);
+		 star= getActivity().getResources().getDrawable(R.drawable.ic_white_star);
+
+		lblTimestamp.setText(Api.outDateFormat.format(meeting.Timestamp));
+		//lblName.setText(meeting.Location.Name);
 		lblAddress.setText(meeting.Location.Address);
 
 		mMapView = (MapView) v.findViewById(R.id.mapView);
@@ -69,7 +83,41 @@ public class GeneralFragment extends MeetingFragment {
 			}
 		});
 
+		lstStars = v.findViewById(R.id.lstStars);
+		stars = new ArrayList<>();
+		final int starsCount = 5;
+		for(int i = 0;  i < starsCount; i++) {
+			ImageButton img = new ImageButton(getContext());
+			float factor = getResources().getDisplayMetrics().density;
+			LinearLayout.LayoutParams params = new LinearLayout.LayoutParams((int)(40 * factor), (int)(40 * factor));
+			params.setMargins(0, 0, 0, 0);
+			img.setLayoutParams(params);
+			img.setBackgroundResource(0);
+			img.setTag(i+1);
+			img.setOnClickListener(new View.OnClickListener() {
+				@Override
+				public void onClick(View view) {
+					ImageButton v = (ImageButton)view;
+					mark = (float)(int)v.getTag()/starsCount;
+					updateStars();
+				}
+			});
+			lstStars.addView(img);
+			stars.add(img);
+		}
+		updateStars();
 		return v;
+	}
+
+	public void updateStars(){
+		for(int i = 0; i < stars.size(); i++){
+			if((float)i/stars.size() < mark){
+				stars.get(i).setImageDrawable(yellowStar);
+			}
+			else{
+				stars.get(i).setImageDrawable(star);
+			}
+		}
 	}
 
 	@Override

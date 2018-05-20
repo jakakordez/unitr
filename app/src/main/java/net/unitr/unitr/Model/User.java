@@ -3,6 +3,7 @@ package net.unitr.unitr.Model;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 
 import net.unitr.unitr.Meeting.ParticipantItem;
@@ -19,8 +20,8 @@ import java.net.URL;
  * Created by jakak on 19. 05. 2018.
  */
 
-public class User  extends Model{
-	public String Name;
+public class User extends Model{
+	public String Name, Username;
 	public ArrayList<String> Hobbies;
 
 	public static User me;
@@ -28,10 +29,12 @@ public class User  extends Model{
 
 	public User(JSONObject object) {
 		super(object);
-		Name = GetString("Name");
+		Name = GetString("name");
+		Username = GetString("username");
 		Hobbies = new ArrayList<>();
+
 		
-		String profileURL = GetString("ProfilePicture");
+		String profileURL = GetString("profile_image");
 		try {
 			profilePicture = drawable_from_url(profileURL);
 		} catch (IOException e) {
@@ -58,4 +61,17 @@ public class User  extends Model{
 	public ParticipantItem getParticipatingItem(Context ctx){
 		return new ParticipantItem(this, ctx);
 	}
+
+	static String[] colors = new String[]{"#ffeb3b", "#4caf50", "#f44336", "#ff5722", "#673ab7"};
+
+	public String getColor(){
+		int sum = 0;
+		char[] chars = new char[Name.length()];
+		Name.getChars(0, Name.length(), chars, 0);
+		for(int i = 0; i < Name.length(); i++){
+			sum += chars[i];
+		}
+		return colors[sum%colors.length];
+	}
+
 }

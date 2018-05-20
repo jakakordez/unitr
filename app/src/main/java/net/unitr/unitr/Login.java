@@ -30,6 +30,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import net.unitr.unitr.Meeting.MeetingReview;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -193,7 +195,7 @@ public class Login extends AppCompatActivity implements LoaderCallbacks<Cursor> 
 
 	private boolean isEmailValid(String email) {
 		//TODO: Replace this with your own logic
-		return email.contains("@");
+		return email.length() > 0;
 	}
 
 	private boolean isPasswordValid(String password) {
@@ -334,7 +336,9 @@ public class Login extends AppCompatActivity implements LoaderCallbacks<Cursor> 
 			showProgress(false);
 
 			if (success) {
-				finish();
+				//finish();
+				Intent i = new Intent(getApplicationContext(), Registration.class);
+				startActivity(i);
 
 			} else {
 				mPasswordView.setError(getString(R.string.error_incorrect_password));

@@ -63,14 +63,14 @@ public class MeetingReview extends AppCompatActivity {
 		mViewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
 		tabLayout.addOnTabSelectedListener(new TabLayout.ViewPagerOnTabSelectedListener(mViewPager));
 
-		FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+		/*FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
 		fab.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View view) {
 				Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
 						.setAction("Action", null).show();
 			}
-		});
+		});*/
 	}
 
 	@Override
@@ -121,11 +121,13 @@ public class MeetingReview extends AppCompatActivity {
 				case 2:
 					fragment = new DiscussionFragment();
 			}
-			try {
-				fragment.meeting = new Meeting(new JSONObject("{\"Location\": {\"Name\": \"Skriti kot\", \"Address\": \"Ajdovščina, 1000 Ljubljana\", \"Longitude\": 14.46, \"Latitude\": 45.7}, \"Timestamp\": \"18-05-2018\", \"Users\": [{\"Name\": \"Janez Novak\", \"ProfilePicture\": \"url\"}]}"));
-			} catch (JSONException e) {
+			/*try {
+				fragment.meeting = new Meeting(new JSONObject("{\"location\": {\"name\": \"Skriti kot\", \"address\": \"Ajdovščina, 1000 Ljubljana\", \"longitude\": 14.46, \"latitude\": 45.7}, \"timestamp\": \"18-05-2018\", \"users\": [{\"name\": \"Janez Novak\", \"profile_image\": \"url\"}]}"));
+			} catch (Exception e) {
 				e.printStackTrace();
-			}
+			}*/
+			fragment.meeting = Meeting.current;
+			getSupportActionBar().setTitle("Meeting at "+fragment.meeting.Location.Name);
 			return fragment;
 		}
 
