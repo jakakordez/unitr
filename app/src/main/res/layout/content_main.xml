@@ -11,29 +11,9 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Meeting"
-        android:id="@+id/btnMeeting"/>
+        android:orientation="vertical"
+        android:id="@+id/meeting_content">
 
-
-        <net.unitr.unitr.MeetingItem
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
-        <net.unitr.unitr.MeetingItem
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
-        <net.unitr.unitr.MeetingItem
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
-        <net.unitr.unitr.MeetingItem
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
-        <net.unitr.unitr.MeetingItem
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
     </LinearLayout>
 
 </android.support.v4.widget.NestedScrollView>

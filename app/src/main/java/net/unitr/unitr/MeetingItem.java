@@ -1,6 +1,7 @@
 package net.unitr.unitr;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
@@ -11,6 +12,7 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import net.unitr.unitr.Meeting.MeetingReview;
 import net.unitr.unitr.Model.Meeting;
 import net.unitr.unitr.Model.User;
 
@@ -46,6 +48,15 @@ public class MeetingItem extends LinearLayout {
 		//if(user.profilePicture != null) imgProfile.setImageBitmap(user.profilePicture);
 		addView(view);
 		view.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
+		view.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View view) {
+				Meeting.current = meeting;
+				Intent i = new Intent(getContext(), MeetingReview.class);
+				i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+				getContext().startActivity(i);
+			}
+		});
 	}
 
 	/*@Override

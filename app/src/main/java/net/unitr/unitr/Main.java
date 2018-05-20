@@ -8,6 +8,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
+import android.widget.LinearLayout;
 
 import net.unitr.unitr.Meeting.MeetingReview;
 import net.unitr.unitr.Model.Api;
@@ -17,8 +18,11 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.ArrayList;
+
 public class Main extends AppCompatActivity {
-	Button btnMeeting;
+	LinearLayout meetingContent;
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -26,13 +30,8 @@ public class Main extends AppCompatActivity {
 		Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
 		setSupportActionBar(toolbar);
 
-		btnMeeting = (Button)findViewById(R.id.btnMeeting);
-		btnMeeting.setOnClickListener(new View.OnClickListener() {
-			@Override
-			public void onClick(View view) {
-			openMeeting();
-			}
-		});
+		meetingContent = findViewById(R.id.meeting_content);
+
 
 		FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
 		fab.setOnClickListener(new View.OnClickListener() {
@@ -49,19 +48,30 @@ public class Main extends AppCompatActivity {
 		//getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 	}
 
-	private void openMeeting(){
+	@Override
+	protected void onResume() {
+		super.onResume();
+		loadMeetings();
+	}
+
+	private void loadMeetings(){
 
 		Api.Download("meeting", new Api.PCallable() {
 			@Override
-			public void call(JSONArray obj) {
-
+			public void call(JSONArray arr) {
 				try {
-					Meeting.current = new Meeting(obj.getJSONObject(0));
+					Meeting.storage = new ArrayList<>();
+
+					for (int i = 0; i < arr.length(); i++) {
+						Meeting meeting = new Meeting(arr.getJSONObject(i));
+						Meeting.storage.add(meeting);
+						MeetingItem itm = new MeetingItem(meeting, getApplicationContext());
+						meetingContent.addView(itm);
+					}
+					//Meeting.current = new Meeting(arr.getJSONObject(0));
 				} catch (JSONException e) {
 					e.printStackTrace();
 				}
-				Intent i = new Intent(getApplicationContext(), MeetingReview.class);
-				startActivity(i);
 			}
 		});
 

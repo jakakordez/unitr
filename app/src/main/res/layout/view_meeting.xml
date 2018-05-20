@@ -34,7 +34,7 @@
             android:layout_marginStart="5dp"
             android:layout_alignParentStart="true"
             android:layout_below="@+id/lblName"
-            android:src="@mipmap/profile"
+            android:src="@mipmap/ic_default_profile"
             app:civ_border_color="#FF000000"
             app:civ_border_width="2dp"/>
 
@@ -47,7 +47,7 @@
             android:layout_marginStart="5dp"
             android:layout_alignParentStart="true"
             android:layout_below="@+id/lblName"
-            android:src="@mipmap/profile"
+            android:src="@mipmap/ic_default_profile"
             app:civ_border_color="#FF000000"
             app:civ_border_width="2dp"/>
 
@@ -59,7 +59,7 @@
             android:layout_marginStart="5dp"
             android:layout_alignParentStart="true"
             android:layout_below="@+id/lblName"
-            android:src="@mipmap/profile"
+            android:src="@mipmap/ic_default_profile"
             app:civ_border_color="#FF000000"
             app:civ_border_width="2dp"/>
     </LinearLayout>

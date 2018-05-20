@@ -25,6 +25,7 @@ public class Meeting extends Model {
 	public int id;
 
 	public static Meeting current;
+	public static ArrayList<Meeting> storage = new ArrayList<>();
 
 	public ArrayList<User> Users;
 
