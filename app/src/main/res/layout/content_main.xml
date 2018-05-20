@@ -8,37 +8,32 @@
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="net.unitr.unitr.Main"
     tools:showIn="@layout/activity_main">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
     <Button
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Meeting"
         android:id="@+id/btnMeeting"/>
 
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-         <LinearLayout
-             android:layout_width="wrap_content"
-             android:layout_height="wrap_content"
-             android:orientation="vertical">
 
-
-            <net.unitr.unitr.MeetingItem
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
-            <net.unitr.unitr.MeetingItem
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
-            <net.unitr.unitr.MeetingItem
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
-            <net.unitr.unitr.MeetingItem
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
-            <net.unitr.unitr.MeetingItem
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
-         </LinearLayout>
-    </ScrollView>
+        <net.unitr.unitr.MeetingItem
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+        <net.unitr.unitr.MeetingItem
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+        <net.unitr.unitr.MeetingItem
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+        <net.unitr.unitr.MeetingItem
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+        <net.unitr.unitr.MeetingItem
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+    </LinearLayout>
 
 </android.support.v4.widget.NestedScrollView>

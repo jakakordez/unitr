@@ -5,7 +5,9 @@ import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import net.unitr.unitr.Model.Meeting;
@@ -42,5 +44,13 @@ public class MeetingItem extends LinearLayout {
 		//CircleImageView imgProfile = (CircleImageView)view.findViewById(R.id.profile_image);
 		//if(user.profilePicture != null) imgProfile.setImageBitmap(user.profilePicture);
 		addView(view);
+		setWeightSum(1);
+		setLayoutParams(new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
+	}
+
+	@Override
+	protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
+		super.onMeasure(widthMeasureSpec, heightMeasureSpec);
+
 	}
 }
