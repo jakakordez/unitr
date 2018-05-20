@@ -23,7 +23,8 @@
             app:contentScrim="?attr/colorPrimary"
             app:layout_scrollFlags="scroll|exitUntilCollapsed"
             app:expandedTitleTextAppearance="@android:color/transparent"
-            app:toolbarId="@+id/toolbar">
+            app:toolbarId="@+id/toolbar"
+            android:background="@drawable/common_full_open_on_phone">
 
             <android.support.v7.widget.Toolbar
                 android:id="@+id/toolbar"

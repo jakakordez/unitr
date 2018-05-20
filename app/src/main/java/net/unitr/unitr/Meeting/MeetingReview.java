@@ -127,7 +127,7 @@ public class MeetingReview extends AppCompatActivity {
 				e.printStackTrace();
 			}*/
 			fragment.meeting = Meeting.current;
-			getSupportActionBar().setTitle("Meeting at "+fragment.meeting.Location.Name);
+			getSupportActionBar().setTitle(fragment.meeting.getTitle());
 			return fragment;
 		}
 
