@@ -1,30 +1,71 @@
 package net.unitr.unitr.Meeting;
 
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import net.unitr.unitr.Discussion.ChatMessage;
+import net.unitr.unitr.Discussion.ChatMessageAdapter;
 import net.unitr.unitr.R;
+
+import java.util.ArrayList;
 
 /**
  * A simple {@link Fragment} subclass.
  */
 public class DiscussionFragment extends MeetingFragment{
-
+	private ChatMessageAdapter mAdapter;
+	private RecyclerView mRecyclerView;
 
 	public DiscussionFragment() {
 		// Required empty public constructor
 	}
 
-
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
-	                         Bundle savedInstanceState) {
+							 Bundle savedInstanceState) {
 		// Inflate the layout for this fragment
-		return inflater.inflate(R.layout.fragment_discussion, container, false);
+		View v = inflater.inflate(R.layout.fragment_discussion, container, false);
+
+		mRecyclerView = (RecyclerView) v.findViewById(R.id.recyclerView);
+		mRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+
+		mAdapter = new ChatMessageAdapter(this.getContext(), new ArrayList<ChatMessage>());
+		mRecyclerView.setAdapter(mAdapter);
+		sendMessage("Hello first message :) \uD83D\uDC4D");
+		return v;
 	}
 
+	public void sendMessage(String message) {
+		ChatMessage chatMessage = new ChatMessage(message, true, "");
+		mAdapter.add(chatMessage);
+
+		mimicOtherMessage(message);
+	}
+	private void mimicOtherMessage(String message) {
+		ChatMessage chatMessage = new ChatMessage(message, false, "");
+		mAdapter.add(chatMessage);
+
+		mRecyclerView.scrollToPosition(mAdapter.getItemCount() - 1);
+	}
+
+	private void sendMessage() {
+		ChatMessage chatMessage = new ChatMessage(null, true, "");
+		mAdapter.add(chatMessage);
+
+		mimicOtherMessage();
+	}
+
+	private void mimicOtherMessage() {
+		ChatMessage chatMessage = new ChatMessage(null, false, "");
+		mAdapter.add(chatMessage);
+
+		mRecyclerView.scrollToPosition(mAdapter.getItemCount() - 1);
+	}
 }
