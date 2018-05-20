@@ -8,7 +8,7 @@ import java.util.Date;
  * Created by jakak on 19. 05. 2018.
  */
 
-public class Model {
+public abstract class Model {
 	JSONObject object;
 
 	public Model(JSONObject object){

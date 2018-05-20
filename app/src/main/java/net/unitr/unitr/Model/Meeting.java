@@ -22,17 +22,20 @@ public class Meeting extends Model {
 
 	public Place Location;
 	public Date Timestamp;
+	public int id;
+
+	public static Meeting current;
 
 	public ArrayList<User> Users;
 
 	public Meeting(JSONObject object){
 		super(object);
-		Location = new Place(GetObject("Location"));
-		Timestamp = GetDate("Timestamp");
+		Location = new Place(GetObject("location"));
+		Timestamp = GetDate("timestamp");
 
 		Users = new ArrayList<>();
 		try {
-			JSONArray array = object.optJSONArray("Users");
+			JSONArray array = object.optJSONArray("users");
 			for (int i = 0; i < array.length(); i++){
 				User u = new User(array.getJSONObject(i));
 

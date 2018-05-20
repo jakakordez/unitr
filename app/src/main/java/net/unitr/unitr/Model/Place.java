@@ -15,10 +15,10 @@ public class Place extends Model{
 	public Place(JSONObject object) {
 		super(object);
 
-		Name = GetString("Name");
-		Address = GetString("Address");
-		Latitude = GetDouble("Latitude");
-		Longitude = GetDouble("Longitude");
+		Name = GetString("name");
+		Address = GetString("address");
+		Latitude = GetDouble("latitude");
+		Longitude = GetDouble("longitude");
 	}
 
 	public LatLng GetLatLng(){

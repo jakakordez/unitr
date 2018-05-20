@@ -4,33 +4,69 @@
              android:layout_height="match_parent"
              tools:context="net.unitr.unitr.Meeting.GeneralFragment">
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
         android:id="@+id/lltGeneral">
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Skriti kot"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="10dp"
+            android:text="Where"
+            android:textColor="@color/colorText"
+            android:textSize="20sp"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentTop="true"
+            android:text="When"
+            android:layout_marginEnd="10dp"
+            android:textColor="@color/colorText"
+            android:textSize="20sp"
             android:textStyle="bold"
-            android:textSize="26sp"
-            android:textColor="@color/colorPrimary"
-            android:id="@+id/lblName"/>
+            android:id="@+id/textView"/>
+
         <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Friday, 18. 5. 2018 15:00"
-        android:id="@+id/lblTimestamp"/>
-        <TextView
+            android:id="@+id/lblTimestamp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Ajdovščina"
-            android:id="@+id/lblAddress"/>
+            android:layout_alignEnd="@+id/textView"
+            android:layout_below="@+id/textView"
+            android:text="Friday, 18. 5. 2018 15:00"/>
+
+        <TextView
+            android:id="@+id/lblAddress"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/textView"
+            android:layout_marginStart="10dp"
+            android:text="Ajdovščina"/>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_centerVertical="true"
+            android:layout_alignBaseline="@id/lblAddress"
+            android:id="@+id/lstStars"
+            android:layout_marginStart="10dp">
+        </LinearLayout>
+
         <com.google.android.gms.maps.MapView
             android:id="@+id/mapView"
             android:layout_width="match_parent"
-            android:layout_height="200dp" />
-    </LinearLayout>
+            android:layout_height="match_parent"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/lstStars"
+            android:layout_marginTop="12dp"/>
+    </RelativeLayout>
 
 </FrameLayout>

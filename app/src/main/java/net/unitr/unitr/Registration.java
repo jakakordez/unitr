@@ -53,7 +53,7 @@ public class Registration extends AppCompatActivity {
 			}
 		});
 
-		txtName.setText(User.me.Name);
+		//txtName.setText(User.me.Name);
 
 		final ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
 				android.R.layout.simple_dropdown_item_1line, items);
