@@ -54,4 +54,8 @@ public class Meeting extends Model {
 		}
 		return list;
 	}
+
+	public String getTitle(){
+		return "Meeting at "+Location.Name;
+	}
 }
