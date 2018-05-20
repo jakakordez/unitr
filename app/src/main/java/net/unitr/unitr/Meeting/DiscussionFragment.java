@@ -9,6 +9,8 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
+import android.widget.ImageButton;
 
 import net.unitr.unitr.Discussion.ChatMessage;
 import net.unitr.unitr.Discussion.ChatMessageAdapter;
@@ -22,6 +24,8 @@ import java.util.ArrayList;
 public class DiscussionFragment extends MeetingFragment{
 	private ChatMessageAdapter mAdapter;
 	private RecyclerView mRecyclerView;
+	private EditText editMessage;
+	private ImageButton sendMessage;
 
 	public DiscussionFragment() {
 		// Required empty public constructor
@@ -35,6 +39,18 @@ public class DiscussionFragment extends MeetingFragment{
 
 		mRecyclerView = (RecyclerView) v.findViewById(R.id.recyclerView);
 		mRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+		editMessage = v.findViewById(R.id.text_message);
+		sendMessage = v.findViewById(R.id.send_message);
+		sendMessage.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View view) {
+				String message = editMessage.getText().toString();
+				if (message.equals(""))
+					message = "\uD83D\uDC4D";
+				editMessage.setText("");
+				sendMessage(message);
+			}
+		});
 
 		mAdapter = new ChatMessageAdapter(this.getContext(), new ArrayList<ChatMessage>());
 		mRecyclerView.setAdapter(mAdapter);
@@ -43,27 +59,14 @@ public class DiscussionFragment extends MeetingFragment{
 	}
 
 	public void sendMessage(String message) {
-		ChatMessage chatMessage = new ChatMessage(message, true, "");
-		mAdapter.add(chatMessage);
-
-		mimicOtherMessage(message);
-	}
-	private void mimicOtherMessage(String message) {
-		ChatMessage chatMessage = new ChatMessage(message, false, "");
+		ChatMessage chatMessage = new ChatMessage(message, true, "#4caf50");
 		mAdapter.add(chatMessage);
 
 		mRecyclerView.scrollToPosition(mAdapter.getItemCount() - 1);
 	}
 
-	private void sendMessage() {
-		ChatMessage chatMessage = new ChatMessage(null, true, "");
-		mAdapter.add(chatMessage);
-
-		mimicOtherMessage();
-	}
-
-	private void mimicOtherMessage() {
-		ChatMessage chatMessage = new ChatMessage(null, false, "");
+	private void recieveMessage(String message, String color) {
+		ChatMessage chatMessage = new ChatMessage(message, false, color);
 		mAdapter.add(chatMessage);
 
 		mRecyclerView.scrollToPosition(mAdapter.getItemCount() - 1);

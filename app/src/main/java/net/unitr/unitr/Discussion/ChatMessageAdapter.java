@@ -1,6 +1,7 @@
 package net.unitr.unitr.Discussion;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -76,6 +77,10 @@ public class ChatMessageAdapter extends RecyclerView.Adapter<ChatMessageAdapter.
 
         String date = new SimpleDateFormat("hh:mm aa", Locale.getDefault()).format(new Date());
         holder.tvTime.setText(date);
+        if (!chatMessage.getColor().equals("")) {
+            int color = Color.parseColor(chatMessage.getColor());
+            holder.chatMessageView.setBackgroundColor(color, manipulateColor(color, 0.8f));
+        }
 
         holder.chatMessageView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -83,6 +88,17 @@ public class ChatMessageAdapter extends RecyclerView.Adapter<ChatMessageAdapter.
 
             }
         });
+    }
+
+    public static int manipulateColor(int color, float factor) {
+        int a = Color.alpha(color);
+        int r = Math.round(Color.red(color) * factor);
+        int g = Math.round(Color.green(color) * factor);
+        int b = Math.round(Color.blue(color) * factor);
+        return Color.argb(a,
+                Math.min(r,255),
+                Math.min(g,255),
+                Math.min(b,255));
     }
 
     class MessageHolder extends RecyclerView.ViewHolder {
